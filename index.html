@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ariana Cisneros — CV</title>
+<meta name="description" content="Ariana Cisneros — Bioinformatics &amp; Bioengineering, PhD Student, Sharf Lab, UCSC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f6;
+    --ink: #1b1b22;
+    --ink-soft: #4a4a52;
+    --rule: #dedad0;
+    --signal: #4c3bcf;
+    --tissue: #c97b5e;
+    --max-w: 760px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-font-smoothing: antialiased; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  .page {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 40px 24px 56px;
+  }
+
+  /* ---------- Header ---------- */
+
+  header { margin-bottom: 26px; }
+
+  .name {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+    color: var(--ink);
+  }
+
+  .contact {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    gap: 3px 10px;
+  }
+
+  .contact a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .contact a:hover { color: var(--signal); border-color: var(--signal); }
+
+  /* ---------- Signature: spike trace divider ---------- */
+
+  .trace {
+    width: 100%;
+    height: 34px;
+    margin: 28px 0 40px;
+    display: block;
+  }
+  .trace path {
+    fill: none;
+    stroke: var(--signal);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ---------- Section headings ---------- */
+
+  section { margin-bottom: 28px; }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--signal);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ---------- Timeline entries ---------- */
+
+  .entry {
+    display: grid;
+    grid-template-columns: 118px 1fr;
+    gap: 16px;
+    padding: 11px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .entry:first-of-type { border-top: none; padding-top: 0; }
+
+  .entry .when {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    padding-top: 2px;
+    line-height: 1.4;
+  }
+
+  .entry .what .role {
+    font-weight: 600;
+    font-size: 0.98rem;
+    margin: 0 0 1px;
+    color: var(--ink);
+  }
+
+  .entry .what .org {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin: 0 0 6px;
+  }
+
+  .entry .what p {
+    margin: 0 0 6px;
+    color: var(--ink);
+    font-size: 0.91rem;
+  }
+  .entry .what p:last-child { margin-bottom: 0; }
+
+  .entry .what a {
+    color: var(--tissue);
+    word-break: break-word;
+  }
+
+  .role-sub {
+    margin: 0 0 6px;
+    font-size: 0.91rem;
+  }
+  .role-sub .role { font-weight: 600; }
+  .role-sub .org { font-style: italic; color: var(--ink-soft); }
+
+  /* ---------- Education ---------- */
+
+  .edu-entry {
+    display: grid;
+    grid-template-columns: 118px 1fr;
+    gap: 16px;
+  }
+  .edu-entry .when {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    padding-top: 2px;
+  }
+  .edu-entry .what .role { font-weight: 600; font-size: 0.98rem; margin: 0 0 1px; }
+  .edu-entry .what .org { font-style: italic; color: var(--ink-soft); font-size: 0.9rem; }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 560px) {
+    .entry, .edu-entry {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .entry .when, .edu-entry .when {
+      padding-top: 0;
+    }
+    .entry { padding: 10px 0; }
+  }
+
+  /* ---------- Print ---------- */
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 24px; max-width: 100%; }
+    .trace { margin: 16px 0 24px; }
+    a { color: inherit !important; }
+  }
+
+  /* ---------- Reduced motion / focus ---------- */
+
+  a:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1 class="name">Ariana Cisneros</h1>
+    <div class="contact">
+      <a href="mailto:accisner@ucsc.edu">accisner@ucsc.edu</a>
+      <span>·</span>
+      <a href="https://www.linkedin.com/in/ariana-cisneros-a38b84151/" target="_blank" rel="noopener">LinkedIn</a>
+      <span>·</span>
+      <a href="https://orcid.org/0000-0001-5539-0614" target="_blank" rel="noopener">ORCID</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-label">Experience</div>
+
+    <div class="entry">
+      <div class="when">September 2022&ndash;Present</div>
+      <div class="what">
+        <p class="role">PhD Candidate</p>
+        <p class="org">Bioinformatics and Bioengineering, Sharf Lab, UCSC</p>
+        <p>Focusing on generating microstructures to interrogate circuit development in cortical organoids.</p>
+        <p>Generation of human neural organoids (Cortical, midbrain, thalamic), electrophysiology, fabrication of microfluidic devices, spike sorting and computational modeling of dynamics.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">May 2020&ndash;June 2022</div>
+      <div class="what">
+        <p class="role">Associate Scientist</p>
+        <p class="org">Nanomix Inc</p>
+        <p>R&amp;D product development for microfluidics based multiplex POC diagnostic assays.</p>
+        <p>Rapid Covid Antigen Test, Rapid Covid Antibody Test, Rapid S1 Sepsis Panel (Whole Blood Panel).</p>
+        <p>Assay optimization of sensor materials through electrochemical assay development in cyclic voltammetry and sensor impedance assays. Worked on optimizing biofunctionalized sensor reliability and accuracy. Development of improved filtration methods for whole blood/nasal sample collection. Development of various conjugate pad QC stability assays.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">August 2019&ndash;Present</div>
+      <div class="what">
+        <p class="role">Scientist</p>
+        <p class="org">Exocognitive Systems LLC</p>
+        <p>Founding member. Development of interactive neural tissue culture system built to receive and send signals via a biocompatible microelectrode array to provide an inexpensive source of adaptive control in signal processing. Project manager for neural organoid development, developing robustness assays and developing compatible imaging techniques for reliable control experiments. Gene insertion assays for visualizing firing of action potentials. Prototyping microscopy platforms and imaging of organoid culture.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">August 2019&ndash;May 2020</div>
+      <div class="what">
+        <p class="role">Research Associate</p>
+        <p class="org">Marin Biologic Laboratories</p>
+        <p>Development and validation for tissue culture based, including MLR assays scratch assays, T-cell proliferation assays, ELISA assays, and cytokine detection assays. QC/QA of equipment calibrations, workbooks and reports. Python-flow kit flow cytometry analysis.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section>
+    <div class="section-label">Publications</div>
+
+    <div class="entry">
+      <div class="when">2026</div>
+      <div class="what">
+        <p>Nakamoto A, Keith L, Yu Q, Sugiyama L, Wu X, Luiz B, Villalun M, Jacobs J, Corbett-Detig R, Cisneros A, Heath HD, Shanks C, Okamoto F, Alburo AAA, Henricson K, Lan YJ, Moore H, Seligmann W, Zybina Y. Genome sequence of <em>Ceratocystis huliohia</em>, a fungal pathogen of the native 'Ōhi'a tree in Hawai'i. <em>Microbiol Resour Announc</em> 15:e00236-26 (2026). <a href="https://doi.org/10.1128/mra.00236-26" target="_blank" rel="noopener">https://doi.org/10.1128/mra.00236-26</a></p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2026</div>
+      <div class="what">
+        <p>Cisneros A, Moarefian M, Duru J, Karinicolas K, Goodman T, Gonzalez Z, Zatserklyaniy A, McKenna S, Anderson A, Wiliams N, Kaurala G, Sanchez E, Shariati A, Teodorescu M, Sharf T. Spatially defined axonal guidance in neural organoids with micropatterned microfluidic channels. <em>bioRxiv</em> (2026). <a href="https://doi.org/10.64898/2026.04.30.721979" target="_blank" rel="noopener">https://doi.org/10.64898/2026.04.30.721979</a></p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2026</div>
+      <div class="what">
+        <p>Jacobs J, Lum A, Mina E, Morey CN, Lee DD, Gutierrez E, Dionisio J, Mirchandani C, Sylvester L, Nakamoto A, Loucks H, Wanket C, Cisneros A, Calicchio A, Enstrom AN, Headrick C, Okamoto F, Heath HD, Malukhina K, Russell P, Nag S, Gillespie T, Sobolewski W, Truong Z, Russell SL. Complete <em>de novo</em> assembly of <em>Wolbachia</em> endosymbiont of contemporary <em>Drosophila simulans</em> using long-read genome sequencing. <em>Microbiol Resour Announc</em> 15:e00992-25 (2026). <a href="https://doi.org/10.1128/mra.00992-25" target="_blank" rel="noopener">https://doi.org/10.1128/mra.00992-25</a></p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2026</div>
+      <div class="what">
+        <p>Rosen Y, Doganyigit K, Arul S, Wachtel E, Ehrlich D, Venuturimilli V, Mouzaya M, Oriaku S, Ndiforchu B, Kaurala G, Hernandez S, Moarefian M, Schweiger H, Cisneros A, Zeraatkar M, Vera-Choqqueccota S, Geng J, Sharf T, Salama S, Mostajo-Radji MA, Winkler E, Haussler D, Teodorescu M. Incubator-Free Organoid Culture in a Sealed Recirculatory System. <em>bioRxiv</em> (2026). <a href="https://doi.org/10.1101/2025.09.03.673593" target="_blank" rel="noopener">https://doi.org/10.1101/2025.09.03.673593</a></p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2020</div>
+      <div class="what">
+        <p>The Exploration of Novel Regulatory Relationships Drives Haloarchaeal Operon-Like Structural Dynamics over Short Evolutionary Distances. <em>Microorganisms</em> (2020). <a href="https://doi.org/10.3390/microorganisms8121900" target="_blank" rel="noopener">https://doi.org/10.3390/microorganisms8121900</a></p>
+      </div>
+    </div>
+
+  </section>
+
+  <section>
+    <div class="section-label">Education</div>
+    <div class="edu-entry">
+      <div class="when">Graduated June 2019</div>
+      <div class="what">
+        <p class="role">UC Davis</p>
+        <p class="org">BS Molecular and Cellular Biology</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Fellowships</div>
+
+    <div class="entry">
+      <div class="when">June 2026&ndash;Spring 2027</div>
+      <div class="what">
+        <p class="role">IMPRINT Scholar</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2024&ndash;2026</div>
+      <div class="what">
+        <p class="role">IMSD T32 Training Fellowship</p>
+        <p class="org">National Institutes of Health (NIH)</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2022&ndash;2024</div>
+      <div class="what">
+        <p class="role">NHGRI T32 Training Fellowship</p>
+        <p class="org">National Institutes of Health (NIH)</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section>
+    <div class="section-label">Presentations</div>
+
+    <div class="entry">
+      <div class="when">November 2025</div>
+      <div class="what">
+        <p class="role">Poster Presenter</p>
+        <p class="org">Society for Neuroscience (SfN)</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">April 2025</div>
+      <div class="what">
+        <p class="role">Poster Presenter</p>
+        <p class="org">National Human Genome Research Institute Training Conference (NHGRI)</p>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+</body>
+</html>
